@@ -7,5 +7,4 @@ fs.writeFileSync(filename, payload, function (err) {
 });
 console.log(`Payload written to: ${filename}`);
 console.log(`Payload result endpoint: ${payloadAsJson.server.url}${payloadAsJson.server.endpoint}`);
-console.log(`Payload for check: ${payloadAsJson.check.slug} on repository: ${payloadAsJson.repository}`);
-console.log(`Payload for repository: ${payloadAsJson.repository}`);
+console.log(`Payload for check: ${payloadAsJson.check.slug} on repository: ${payloadAsJson.source.url}`);
