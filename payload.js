@@ -1,11 +1,11 @@
+const fs = require('fs');
 let payload = Buffer.from(process.env.INPUT_PAYLOAD, 'base64').toString('utf-8');
+let filename = "/tmp/service-catalog-payload.json";
 payloadAsJson = JSON.parse(payload);
-process.env['PAYLOAD'] = payload
-process.env['PAYLOAD_ENDPOINT'] = payloadAsJson.server.url + payloadAsJson.server.endpoint
-process.env['PAYLOAD_REPOSITORY_URL'] = payloadAsJson.repository
-process.env['PAYLOAD_CHECK_SLUG'] = payloadAsJson.check.name
-process.env['PAYLOAD_SERVER'] = JSON.stringify(payloadAsJson.server)
-process.env['PAYLOAD_CHECK'] = JSON.stringify(payloadAsJson.check)
-process.env['PAYLOAD_RESULT'] = JSON.stringify(payloadAsJson.result)
-process.env['PAYLOAD_SERVICE'] = JSON.stringify(payloadAsJson.service)
-process.env['PAYLOAD_SOURCE'] = JSON.stringify(payloadAsJson.source)
+fs.writeFileSync(filename, payload, function (err) {
+  if (err) return console.log(err);
+});
+console.log(`Payload written to: ${filename}`);
+console.log(`Payload result endpoint: ${payloadAsJson.server.url}${payloadAsJson.server.endpoint}`);
+console.log(`Payload for check: ${payloadAsJson.check.slug} on repository: ${payloadAsJson.repository}`);
+console.log(`Payload for repository: ${payloadAsJson.repository}`);

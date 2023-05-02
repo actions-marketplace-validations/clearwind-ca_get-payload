@@ -1,4 +1,4 @@
-{
+x = {
   server: {
     url: "https://service-catalog.fly.dev",
     endpoint: "/api/result/47/",
@@ -54,3 +54,4 @@
     updated: "2023-03-31T19:53:29.098790Z",
   },
 };
+console.log(JSON.stringify(x));
