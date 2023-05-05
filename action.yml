@@ -5,6 +5,10 @@ inputs:
     description: 'The payload of the service catalog request'
     required: false
     default: ${{ github.event.client_payload.data }}
+  payload_file:
+    description: 'The filename to save the payload to'
+    required: false
+    default: '/tmp/service-catalog-payload.json'
 runs:
   using: 'node16'
   main: 'payload.js'
